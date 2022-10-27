@@ -1,21 +1,29 @@
 // src/router/index.ts
 
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'app',
+    name: 'vue3-vite-typescript',
     meta: {
-      title: 'app',
+      title: 'Home',
     },
-    component: () => import('@/App.vue'),
+    component: () => import('@/views/home/index.vue'),
+  },
+  {
+    path: '/error',
+    name: '404',
+    meta: {
+      title: '404',
+    },
+    component: () => import('@/views/404/index.vue'),
   },
   // 替代vue2中的'*'通配符路径
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(), // history 模式则使用 createWebHistory()
+  history: createWebHistory(), // history 模式则使用 createWebHistory()
   routes,
 });
 export default router;

@@ -2,6 +2,7 @@
 
 {
   "compilerOptions": {
+    "experimentalDecorators": true, 
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -26,17 +27,20 @@
       总结：和 "include": ["src/**\/*.js"] 没有任何关系
     */
     "allowJs": true, // 允许编译器编译JS，JSX文件
-    "baseUrl": "./",
     // "typeRoots": [
     //   "node_modules/@types" // 默认会从'node_modules/@types'路径去引入声明文件
     // ],
     // "types": ["node"] // 仅引入'node'模块
     // "paths"是相对于"baseUrl"进行解析
     // 在vite.config里配置了路径别名resolve.alias，为了让编译 ts 时也能够解析对应的路径，我们还需要配置 paths 选项
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-    }
+      "@util/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"]
+    },
   },
+  "exclude": ["node_modules", "dist"],
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   // references属性是 TypeScript 3.0 的新特性，允许将 TypeScript 程序拆分结构化(即拆成多个文件，分别配置不同的部分)。
   "references": [{ "path": "./tsconfig.node.json" }]
